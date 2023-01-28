@@ -8,7 +8,7 @@ export default function releasesIndex({groupData}) {
       <h1 className="text-2xl text-center">Albums</h1>
       <div className="grid grid-cols-6 justify-items-center">
         {groupData.releases.albums.map((album) => (
-          <ReleaseIDisplay image={album["release image"]} name={album["release name"]} artistName={groupData.name} type={"albums"} index={groupData.releases.albums.indexOf(album)}></ReleaseIDisplay>
+          <ReleaseIDisplay image={album["release image"]} name={album["release name"]} artistName={groupData.name} type={"albums"} index={groupData.releases.albums.indexOf(album)} key={groupData.releases.albums.indexOf(album)}></ReleaseIDisplay>
         ))}
       </div>
       <h1 className="text-2xl text-center">Eps</h1>
@@ -16,7 +16,7 @@ export default function releasesIndex({groupData}) {
         {groupData.releases.eps.map((ep) => (
           <>
             {/* <h2>{ep["release name"]}</h2> */}
-            <ReleaseIDisplay image={ep["release image"]} name={ep["release name"]} artistName={groupData.name} type={"eps"}></ReleaseIDisplay>
+            <ReleaseIDisplay image={ep["release image"]} name={ep["release name"]} artistName={groupData.name} type={"eps"} index={groupData.releases.albums.indexOf(ep)} key={groupData.releases.albums.indexOf(ep)}></ReleaseIDisplay>
           </>
         ))}
       </div>
@@ -25,7 +25,7 @@ export default function releasesIndex({groupData}) {
         {groupData.releases.singles.map((single) => (
           <>
             {/* <h2>{single["release name"]}</h2> */}
-            <ReleaseIDisplay image={single["release image"]} name={single["release name"]} artistName={groupData.name} type={"singles"}></ReleaseIDisplay>
+            <ReleaseIDisplay image={single["release image"]} name={single["release name"]} artistName={groupData.name} type={"singles"} index={groupData.releases.albums.indexOf(single)} key={groupData.releases.albums.indexOf(single)}></ReleaseIDisplay>
           </>
         ))}
       </div>

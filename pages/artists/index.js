@@ -5,8 +5,6 @@ import ArtistCard from "../../Components/ArtistCard";
 import { motion } from "framer-motion";
 
 export default function artistIndex({groups}) {
-  const router = useRouter();
-  const data = router.query.darkMode;
   return(
     <>
       <motion.h1 className="text-center text-7xl mt-20 font-poppins"

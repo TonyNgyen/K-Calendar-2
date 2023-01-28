@@ -17,7 +17,7 @@ export default function release({releaseData, artistName, artistImage}) {
         </div>
         <div className="pr-20 md:ml-10 overflow-y-auto">
           {releaseData["release tracks"].map((track) => (
-            <h1 className="text-3xl mt-9">{track["track name"]}</h1>
+            <h1 className="text-3xl mt-9" key={track["track id"]}>{track["track name"]}</h1>
           ))}
         </div>
       </main>

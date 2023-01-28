@@ -81,7 +81,8 @@ export default function Home({groups, releases}) {
             }}
             transition = {{
               duration: 1.5,
-            }}>
+            }}
+            key={release["_id"]}>
             <ReleaseCard artist={release.artist} name={release.name} date={release.date} key={release["_id"]} image={release["artist image"]}></ReleaseCard>
           </motion.div>
         ))}
