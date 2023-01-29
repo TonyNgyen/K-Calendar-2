@@ -4,7 +4,7 @@
 A web application that tracks the releases of future Kpop songs. Not a finished product so there are many unfinished details and bugs. I will be constantly updating.
 
 Hosted on Vercel:
-https://k-calendar-2-myw1uomdq-tonyngyen.vercel.app
+https://k-calendar-2.vercel.app
 ***
 
 ## General Info
