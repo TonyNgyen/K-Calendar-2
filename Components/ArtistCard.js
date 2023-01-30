@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export default function ArtistCard(props) {
   return (
-    <div className="text-center rounded-2xl mx-auto overflow-hidden max-w-sm bg-lightmodeRed shadow-xl shadow-slate-400">
+    <div className="text-center rounded-2xl mx-auto overflow-hidden max-w-sm bg-lightmodeRed shadow-lg shadow-gray-300">
       <Link href={{
         pathname: "artists/" + [props.name]
       }}>
