@@ -11,7 +11,7 @@ module.exports = {
         "cerulean": "#90C2E7",
         "lightmodeRed": "#d21a28",
         "darkmodeRed": "#ff8fa3",
-        "defaultBg": "EEEEEE",
+        "defaultBg": "#EEEEEE",
       },
       fontFamily: {
         "poppins": ["Poppins", "sans-serif"],

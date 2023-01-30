@@ -9,7 +9,7 @@ export default function Navbar(props) {
   const [darkMode, setDarkMode] = useState(false);
   return (
     <div className={darkMode ? "dark" : ""}>
-      <nav className="flex justify-between p-6 bg-white font-poppins md:p-10">
+      <nav className="flex justify-between p-6 bg-defaultBg font-poppins md:p-10">
         <motion.ul className="flex items-center text-xl md:text-2xl"
           initial = {{
             x: -500,
