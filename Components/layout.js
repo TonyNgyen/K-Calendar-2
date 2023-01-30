@@ -3,7 +3,7 @@ import Footer from "./Footer"
 
 export default function Layout({children}) {
   return (
-    <div>
+    <div className="bg-defaultBg">
       <Navbar />
       <main>{children}</main>
       <Footer />
