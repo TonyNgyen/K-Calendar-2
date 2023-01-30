@@ -41,8 +41,6 @@ export default function Home({groups, releases}) {
 
   }
 
-  console.log(foundIndex)
-
   return (
     <>
       <Head>

@@ -8,7 +8,6 @@ import { motion } from "framer-motion"
 export default function ReleasesPage({groups, releases}) {
   const router = useRouter();
   const data = router.query.darkMode;
-  console.log(releases)
 
   let upcomingReleases = [];
   let pastReleases = [];
@@ -68,7 +67,7 @@ export default function ReleasesPage({groups, releases}) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   await dbConnect()
 
   /* find all the data in our database */
