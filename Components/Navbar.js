@@ -28,8 +28,9 @@ export default function Navbar(props) {
           <Link href="/" className="mr-6 text-2xl font-poppins font-medium hidden md:block">
             K-Calendar
           </Link>
-          <Link href="/" className="font-poppins font-medium text-3xl md:hidden">K-</Link>
-          <Link href="/" className="font-poppins font-medium text-3xl md:hidden"><AiFillCalendar href="/" className="mr-6 text-3xl font-poppins font-medium md:hidden" /></Link>
+          <Link href="/" className="font-poppins font-medium text-3xl md:hidden flex justify-between">
+            K-<AiFillCalendar href="/" className="mr-6 text-3xl font-poppins font-medium" />
+          </Link>
           <Link href="/" className={"mr-6" + (props.page ==='Home' ? ' text-green-300': '')}>
             Home
           </Link>
