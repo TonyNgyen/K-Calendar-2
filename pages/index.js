@@ -14,14 +14,6 @@ export default function Home({groups, releases}) {
   let currentDate = new Date();
   let found = false;
   let foundIndex = 0;
-  // while (!found) {
-  //   let releaseDate = new Date(releases[i].date)
-  //   if (releaseDate.getDate() === currentDate.getDate()) {
-  //     found = true;
-  //   } else {
-  //     i++;
-  //   }
-  // }
 
   for (let i = 0; i < releases.length; i++) {
     let releaseDate = new Date(releases[i].date)
@@ -89,28 +81,6 @@ export default function Home({groups, releases}) {
     </>
   )
 }
-
-// export async function getServerSideProps() {
-//   await dbConnect()
-
-//   /* find all the data in our database */
-//   const groupData = await Group.find({})
-//   const groups = groupData.map((doc) => {
-//     const group = doc.toObject()
-//     group._id = group._id.toString()
-//     return group
-//   })
-
-//   const releaseData = await Release.find({})
-//   const releases = releaseData.map((doc) => {
-//     const release = doc.toObject()
-//     release._id = release._id.toString()
-//     return release
-//   })
-//   console.log(releases)
-
-//   return { props: { groups: groups }}
-// } 
 
 export async function getStaticProps() {
   await dbConnect()
