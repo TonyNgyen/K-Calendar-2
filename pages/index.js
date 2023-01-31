@@ -7,6 +7,7 @@ import { motion } from "framer-motion"
 
 // MAKE ALL LINKS/PATHS UPPERCASE TO MAKE ROUTING WITH LINKS EASIER
 // FIX 
+// CHANGE DATABASE TO HAVE RELEASES FOR EACH UPCOMING MONTH
 
 export default function Home({groups, releases}) {
 
@@ -32,6 +33,8 @@ export default function Home({groups, releases}) {
   } catch(err) {
 
   }
+
+  console.log(closestReleases)
 
   return (
     <>
