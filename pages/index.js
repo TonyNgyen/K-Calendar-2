@@ -26,7 +26,7 @@ export default function Home({groups, releases}) {
   }
 
   try {
-    while ((closestReleases.length != 3)) {
+    while ((closestReleases.length != 3) && foundIndex < releases.length) {
       closestReleases.push(releases[foundIndex]);
       foundIndex++;
     }
