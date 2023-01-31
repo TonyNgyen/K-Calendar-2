@@ -1,13 +1,9 @@
-import { useRouter } from "next/router";
 import ReleaseCard from "../../Components/ReleaseCard";
 import dbConnect from "../../lib/dbConnect"
-import Group from "../../models/Group"
 import Release from "../../models/Release"
 import { motion } from "framer-motion"
 
 export default function ReleasesPage({releases}) {
-  const router = useRouter();
-  const data = router.query.darkMode;
 
   let upcomingReleases = [];
   let pastReleases = [];
