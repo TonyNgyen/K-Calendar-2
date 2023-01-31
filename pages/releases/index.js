@@ -5,7 +5,7 @@ import Group from "../../models/Group"
 import Release from "../../models/Release"
 import { motion } from "framer-motion"
 
-export default function ReleasesPage({groups, releases}) {
+export default function ReleasesPage({releases}) {
   const router = useRouter();
   const data = router.query.darkMode;
 
@@ -71,13 +71,6 @@ export async function getStaticProps() {
   await dbConnect()
 
   /* find all the data in our database */
-  const groupData = await Group.find({})
-  const groups = groupData.map((doc) => {
-    const group = doc.toObject()
-    group._id = group._id.toString()
-    return group
-  })
-
   const releaseData = await Release.find({})
   const releases = releaseData.map((doc) => {
     const release = doc.toObject()
@@ -85,5 +78,5 @@ export async function getStaticProps() {
     return release
   })
 
-  return { props: { groups: groups, releases: releases }}
+  return { props: {releases: releases }}
 } 
