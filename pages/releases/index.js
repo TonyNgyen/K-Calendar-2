@@ -63,7 +63,7 @@ export default function ReleasesPage({releases}) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   await dbConnect()
 
   /* find all the data in our database */
