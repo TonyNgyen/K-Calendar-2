@@ -81,7 +81,7 @@ class Releases {
 
     async scrapeAndSave() {
         // Scrape releases table
-        const response = await axios("https://www.reddit.com/r/kpop/wiki/upcoming-releases/2023/january/");
+        const response = await axios("https://www.reddit.com/r/kpop/wiki/upcoming-releases/2023/february/");
         const html = await response.data;
         const $ = cheerio.load(html);
         let allRows = $("table").first().find("tr").toArray();
@@ -178,8 +178,5 @@ class Releases {
     }
 }
 
-let date1 = new Date();
-let date2 = new Date("1/19/2023");
-
-console.log(date1.getDate() === date2.getDate())
-
+let releases = new Releases();
+releases.scrapeAndSave();

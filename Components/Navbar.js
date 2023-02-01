@@ -4,6 +4,9 @@ import { useState } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import {AiFillCalendar} from "react-icons/ai"
+import {AiFillHome} from "react-icons/ai"
+import {ImMusic} from "react-icons/im"
+import {HiUserGroup} from "react-icons/hi"
 
 export default function Navbar(props) {
   const [darkMode, setDarkMode] = useState(false);
@@ -30,10 +33,11 @@ export default function Navbar(props) {
             <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-lightmodeRed"></span>
           </Link>
           <Link href="/" className="font-poppins font-medium text-3xl md:hidden flex justify-between text-lightmodeRed">
-            K-<AiFillCalendar href="/" className="mr-6 text-3xl font-poppins font-medium" />
+            K-<AiFillCalendar href="/" className="mr-8 text-3xl font-poppins font-medium" />
           </Link>
           <Link href="/" className={"mr-6 group transition duration-300" + (props.page ==='Home' ? ' text-green-300': '')}>
-            Home
+            <div className="hidden md:block">Home</div>
+            <AiFillHome className="md:hidden text-black text-3xl mr-2"></AiFillHome>
             <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-lightmodeRed"></span>
           </Link>
           <Link 
@@ -42,7 +46,8 @@ export default function Navbar(props) {
             }} 
             className="mr-6 group transition duration-300"
           >
-            Releases
+            <div className="hidden md:block">Releases</div>
+            <ImMusic className="md:hidden text-black text-2xl mr-2"></ImMusic>
             <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-lightmodeRed"></span>
           </Link>
           <Link
@@ -51,7 +56,8 @@ export default function Navbar(props) {
               }} 
               className="mr-6 group transition duration-300"
           >
-            Artists
+            <div className="hidden md:block">Artists</div>
+            <HiUserGroup className="md:hidden text-black text-3xl"></HiUserGroup>
             <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-lightmodeRed"></span>
           </Link>
         </motion.ul>
