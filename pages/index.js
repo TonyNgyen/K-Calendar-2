@@ -8,7 +8,6 @@ import { motion } from "framer-motion"
 // MAKE ALL LINKS/PATHS UPPERCASE TO MAKE ROUTING WITH LINKS EASIER
 // FIX 
 // CHANGE DATABASE TO HAVE RELEASES FOR EACH UPCOMING MONTH
-// ADD MOBILE ICONS TO PHONE SIZES
 
 export default function Home({groups, releases}) {
 
