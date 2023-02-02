@@ -400,10 +400,5 @@ class Spotify {
     }
 }
 
-// mongoose.connect("mongodb://localhost:27017/kCalendarGroups")
-// mongoose.set('strictQuery', false);
-
 let spotify = new Spotify(client_id, client_secret)
-// spotify.listAllArtists()
-// spotify.addRelatedArtists()
 spotify.getReleasesData()
