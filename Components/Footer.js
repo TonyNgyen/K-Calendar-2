@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="h-14 bg-lightmodeRed mt-40 flex items-center bottom-0 w-full">
-      <p className="mx-auto">Made by Tony</p>
+      <p className="mx-auto text-white">Made by Tony</p>
     </footer>
   )
 }
