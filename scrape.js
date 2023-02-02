@@ -138,12 +138,16 @@ class Releases {
                 }
 
                 try {
-                    artistInfo = await Group.find({"lower case": $(tds[2]).text().replace(/ *\([^)]*\) */g, "").split(", ")[0].toLowerCase()});
-                    artistImage = artistInfo[0]["artist image"]
-                    if (artistImage === undefined) {
+                    artistInfo = await Group.find({"lower_case": $(tds[2]).text().replace(/ *\([^)]*\) */g, "").split(", ")[0].toLowerCase()});
+                    if (artistInfo[0]["artist image"] === undefined) {
+                        console.log("This is it")
                         artistImage = "https://i.scdn.co/image/ab6761610000e5ebb1a15fd3e7c1b375dea2637a"
+                    } else {
+                        console.log("This works")
+                        artistImage = artistInfo[0]["artist image"]
                     }
                 } catch(err) {
+                    console.log("This is it 2")
                     artistImage = "https://i.scdn.co/image/ab6761610000e5ebb1a15fd3e7c1b375dea2637a"
                 }
     
