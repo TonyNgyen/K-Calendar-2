@@ -7,11 +7,11 @@ import {AiFillCalendar} from "react-icons/ai"
 import {AiFillHome} from "react-icons/ai"
 import {ImMusic} from "react-icons/im"
 import {HiUserGroup} from "react-icons/hi"
+import {useTheme} from 'next-themes'
 
 export default function Navbar(props) {
-  const [darkMode, setDarkMode] = useState(false);
+  const {theme, setTheme} = useTheme()
   return (
-    <div className={darkMode ? "dark" : ""}>
       <nav className="flex justify-between p-6 bg-defaultBg font-poppins md:p-10">
         <motion.ul className="flex items-center text-xl md:text-2xl"
           initial = {{
@@ -77,13 +77,12 @@ export default function Navbar(props) {
           }}
         >
           <li>
-            <BsFillMoonStarsFill onClick={() => setDarkMode(!darkMode)} className="cursor-pointer text-2xl dark:text-white"/>
+            <BsFillMoonStarsFill onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="cursor-pointer text-2xl dark:text-white"/>
           </li>
           <li className=" ml-6">
-            <MdAccountCircle onClick={() => setDarkMode(!darkMode)} className="cursor-pointer text-3xl dark:text-white"/>
+            <MdAccountCircle onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="cursor-pointer text-3xl dark:text-white"/>
           </li>
         </motion.ul>
       </nav>
-    </div>
   )
 }
