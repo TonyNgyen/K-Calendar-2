@@ -1,6 +1,5 @@
 import {BsFillMoonStarsFill} from "react-icons/bs"
 import {MdAccountCircle} from "react-icons/md"
-import { useState } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import {AiFillCalendar} from "react-icons/ai"
@@ -8,9 +7,33 @@ import {AiFillHome} from "react-icons/ai"
 import {ImMusic} from "react-icons/im"
 import {HiUserGroup} from "react-icons/hi"
 import {useTheme} from 'next-themes'
+import {BsFillSunFill} from "react-icons/bs"
+import { useState, useEffect } from "react"
 
 export default function Navbar(props) {
-  const {theme, setTheme} = useTheme()
+  const {systemTheme, theme, setTheme} = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, [])
+
+  const themeChanger = () => {
+    if (!mounted) return null;
+    
+    const currentTheme = theme === "system" ? systemTheme : theme
+
+    if (currentTheme === "dark") {
+      return (
+        <BsFillSunFill className="w-7 h-7" role="button" onClick={() => setTheme("light")} />
+      )
+    } else {
+      return (
+        <BsFillMoonStarsFill className="w-7 h-7" role="button" onClick={() => setTheme("dark")} />
+      )
+    }
+  }
+  
   return (
       <nav className="flex justify-between p-6 bg-defaultBg font-poppins md:p-10">
         <motion.ul className="flex items-center text-xl md:text-2xl"
@@ -77,7 +100,8 @@ export default function Navbar(props) {
           }}
         >
           <li>
-            <BsFillMoonStarsFill onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="cursor-pointer text-2xl dark:text-white"/>
+            {/* <BsFillMoonStarsFill onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="cursor-pointer text-2xl dark:text-white"/> */}
+            {themeChanger()}
           </li>
           <li className=" ml-6">
             <MdAccountCircle onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="cursor-pointer text-3xl dark:text-white"/>

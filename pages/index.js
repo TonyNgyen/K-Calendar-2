@@ -34,8 +34,6 @@ export default function Home({groups, releases}) {
 
   }
 
-  console.log(closestReleases)
-
   return (
     <>
       <Head>
