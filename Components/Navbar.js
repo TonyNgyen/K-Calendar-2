@@ -53,7 +53,7 @@ export default function Navbar(props) {
         >
           <Link href="/" className="mr-6 md:mr-10 text-2xl font-poppins font-medium hidden md:block group transition duration-300 md:text-4xl text-lightmodeRed dark:text-darkmodeRed">
             K-Calendar
-            <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 dark:bg-darkmodeRed"></span>
+            <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 dark:bg-darkmodeRed bg-lightmodeRed"></span>
           </Link>
           <Link href="/" className="font-poppins font-medium text-3xl md:hidden flex justify-between text-lightmodeRed">
             K-<AiFillCalendar href="/" className="mr-8 text-3xl font-poppins font-medium" />
@@ -61,7 +61,7 @@ export default function Navbar(props) {
           <Link href="/" className={"mr-6 group transition duration-300" + (props.page ==='Home' ? ' text-green-300': '')}>
             <div className="hidden md:block">Home</div>
             <AiFillHome className="md:hidden text-black text-3xl mr-2"></AiFillHome>
-            <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5  dark:bg-darkmodeRed"></span>
+            <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5  dark:bg-darkmodeRed bg-lightmodeRed"></span>
           </Link>
           <Link 
             href={{
@@ -71,7 +71,7 @@ export default function Navbar(props) {
           >
             <div className="hidden md:block">Releases</div>
             <ImMusic className="md:hidden text-black text-2xl mr-2"></ImMusic>
-            <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5  dark:bg-darkmodeRed"></span>
+            <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5  dark:bg-darkmodeRed bg-lightmodeRed"></span>
           </Link>
           <Link
             href={{
@@ -81,7 +81,7 @@ export default function Navbar(props) {
           >
             <div className="hidden md:block">Artists</div>
             <HiUserGroup className="md:hidden text-black text-3xl"></HiUserGroup>
-            <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5  dark:bg-darkmodeRed"></span>
+            <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5  dark:bg-darkmodeRed bg-lightmodeRed"></span>
           </Link>
         </motion.ul>
         <motion.ul className="flex justify-evenly items-center"
