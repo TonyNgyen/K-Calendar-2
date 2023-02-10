@@ -12,6 +12,8 @@ module.exports = {
         "lightmodeRed": "#d21a28",
         "darkmodeRed": "#ff8fa3",
         "defaultBg": "#EEEEEE",
+        "darkmodeBg": "#101014",
+        "darkmodeReleaseCard": "#2d2d2d"
       },
       fontFamily: {
         "poppins": ["Poppins", "sans-serif"],
