@@ -9,7 +9,7 @@ https://k-calendar-2.vercel.app
 
 ## General Info
  * All data about artists and their releases are taken from the Spotify API in spotify.js
- * Javascript, React, Tailwindcss, Mongodb, and NextJSare all used to operate the actual web application
+ * Javascript, React, Tailwindcss, Mongodb, and NextJS are all used to operate the actual web application
  * Cheerio and Axioes are used on Reddit to get the upcoming releases of the month in scrape.js
 
 ## Future plans
