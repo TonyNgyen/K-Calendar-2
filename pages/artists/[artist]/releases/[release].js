@@ -8,16 +8,16 @@ export default function release({releaseData, artistName, artistImage}) {
     <>
       <main className="bg-red-200 m-20 grid md:grid-cols-2 grid-cols-1 p-8 rounded-2xl shadow-md shadow-gray-500 md:h-[40rem] lg:h-[54rem] lg:p-10">
         <div>
-          <h1 className="text-5xl mb-7">{releaseData["release name"]}</h1>
+          <h1 className="text-4xl mb-7 font-bold font-poppins">{releaseData["release name"]}</h1>
           <Image src={releaseData["release image"]} alt="Image of Release" width={640} height={640} className="aspect-square object-cover object-center rounded-2xl shadow-md shadow-gray-600"/>
           <div className="flex items-center mt-7">
             <Image src={artistImage} alt="Image of Release" width={50} height={50} className="aspect-square object-cover object-center rounded-full"/>
-            <h1 className="text-2xl ml-2"> {artistName} </h1>
+            <h1 className="text-2xl ml-2 font-poppins"> {artistName} </h1>
           </div>
         </div>
         <div className="pr-20 md:ml-10 overflow-y-auto">
           {releaseData["release tracks"].map((track) => (
-            <h1 className="text-3xl mt-9" key={track["track id"]}>{track["track name"]}</h1>
+            <h1 className="text-3xl mt-9 font-poppins" key={track["track id"]}>{track["track name"]}</h1>
           ))}
         </div>
       </main>
