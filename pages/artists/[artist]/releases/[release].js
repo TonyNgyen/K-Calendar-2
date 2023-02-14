@@ -6,9 +6,9 @@ import Image from "next/image"
 export default function release({releaseData, artistName, artistImage}) {
   return (
     <>
-      <main className="bg-red-200 m-20 grid md:grid-cols-2 grid-cols-1 p-8 rounded-2xl shadow-md shadow-gray-500 md:h-[40rem] lg:h-[54rem] lg:p-10">
+      <main className="bg-red-200 m-20 grid md:grid-cols-2 grid-cols-1 p-8 rounded-2xl shadow-md shadow-gray-500 md:h-[40rem] lg:h-[54rem] lg:p-10 dark:bg-darkmodeReleaseCard">
         <div>
-          <h1 className="text-4xl mb-7 font-bold font-poppins">{releaseData["release name"]}</h1>
+          <h1 className="text-4xl mb-7 font-bold font-poppins dark:text-darkmodeRed">{releaseData["release name"]}</h1>
           <Image src={releaseData["release image"]} alt="Image of Release" width={640} height={640} className="aspect-square object-cover object-center rounded-2xl shadow-md shadow-gray-600"/>
           <div className="flex items-center mt-7">
             <Image src={artistImage} alt="Image of Release" width={50} height={50} className="aspect-square object-cover object-center rounded-full"/>
