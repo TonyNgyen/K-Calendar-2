@@ -2,7 +2,7 @@ import ReleaseCard from "../../Components/ReleaseCard";
 import dbConnect from "../../lib/dbConnect"
 import Release from "../../models/Release"
 import { motion } from "framer-motion"
-
+// comment
 export default function ReleasesPage({releases}) {
 
   let upcomingReleases = [];

@@ -81,7 +81,7 @@ class Releases {
 
     async scrapeAndSave() {
         // Scrape releases table
-        const response = await axios("https://www.reddit.com/r/kpop/wiki/upcoming-releases/2023/february/");
+        const response = await axios("https://www.reddit.com/r/kpop/wiki/upcoming-releases/2023/march/");
         const html = await response.data;
         const $ = cheerio.load(html);
         let allRows = $("table").first().find("tr").toArray();
