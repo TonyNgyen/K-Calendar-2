@@ -115,7 +115,12 @@ class Spotify {
             method: "GET",
             headers: headers
         })
-        const data = await result.json();
+        try {
+            const data = await result.json();
+            return data.artists.items[0]
+        } catch (err) {
+            console.log(name)
+        }
         return data.artists.items[0];
     }
 
@@ -401,4 +406,5 @@ class Spotify {
 }
 
 let spotify = new Spotify(client_id, client_secret)
+// spotify.getAllDataById(["3Nrfpe0tUJi4K4DXYWgMUX", "7n2Ycct7Beij7Dj7meI4X0"])
 spotify.getReleasesData()
