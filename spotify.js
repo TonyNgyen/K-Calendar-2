@@ -408,3 +408,8 @@ class Spotify {
 let spotify = new Spotify(client_id, client_secret)
 // spotify.getAllDataById(["3Nrfpe0tUJi4K4DXYWgMUX", "7n2Ycct7Beij7Dj7meI4X0"])
 spotify.getReleasesData()
+
+// run scrape.js
+// run spotify.js
+// delete releases on mongoDB
+// run scrape.js
