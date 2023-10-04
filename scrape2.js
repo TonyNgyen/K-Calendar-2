@@ -74,36 +74,6 @@ class Releases {
     }
 
     async scrape() {
-        const browser = await puppeteer.launch({
-            headless: false,
-            defaultViewport: null,
-        });
-        const page = await browser.newPage();
-        await page.goto("https://www.reddit.com/r/kpop/wiki/upcoming-releases/2023/october/", {
-            waitUntil: "domcontentloaded",
-        });
-        const table = await page.evaluate(() => {
-            // Fetch the first element with class "quote"
-            // Get the displayed text and returns it
-            const tableData = document.getElementsByTagName("table");
-            console.log(tableData);
-            return tableData;
-
-            // // Convert the quoteList to an iterable array
-            // // For each quote fetch the text and author
-            // return Array.from(quoteList).map((quote) => {
-            //   // Fetch the sub-elements from the previously fetched quote element
-            //   // Get the displayed text and return it (`.innerText`)
-            //   const text = quote.querySelector(".text").innerText;
-            //   const author = quote.querySelector(".author").innerText;
-
-            //   return { text, author };
-            // });
-        });
-        table;
-    }
-
-    async getQuotes() {
         // Start a Puppeteer session with:
         // - a visible browser (`headless: false` - easier to debug because you'll see the browser in action)
         // - no default viewport (`defaultViewport: null` - website page will be in full width and height)
@@ -127,21 +97,35 @@ class Releases {
             // Fetch the first element with class "quote"
             // Get the displayed text and returns it
             const rows = document.querySelectorAll('table tr');
-                return Array.from(rows, row => {
-                  const columns = row.querySelectorAll('td');
-                  return Array.from(columns, column => column.innerText);
+            return Array.from(rows, row => {
+                const columns = row.querySelectorAll('td');
+                return Array.from(columns, column => column.innerText);
             });
             // const tds = Array.from(document.querySelectorAll('table tr td'))
             // return tds.map(td => td.innerText)
         });
 
-        // Display the tableData
-        console.log(tableData[1]);
-
         // Close the browser
         await browser.close();
+        return tableData;
     };
+
+    async saveToMongoDB() {
+        const Release = mongoose.model("Release", this.releaseSchema);
+        const Group = mongoose.model("Group", this.groupSchema);
+        let tableData = await this.scrape();
+        tableData.shift();
+        let trackList = [];
+        let previousDate, previousTime, titleTrack, date, time, 
+            albumType, albumName, artistImage, artistInfo;
+        let promise = new Promise(async (resolve, reject) => {
+            for(let i = 0; i < tableData.length; i++) {
+                console.log(tableData[i]);
+            }
+        })
+        promise.then(() => this.disconnect())
+    }
 }
 
 let releases = new Releases();
-releases.getQuotes();
+releases.saveToMongoDB();
