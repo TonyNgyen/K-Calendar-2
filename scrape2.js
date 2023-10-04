@@ -113,6 +113,7 @@ class Releases {
     async saveToMongoDB() {
         const Release = mongoose.model("Release", this.releaseSchema);
         const Group = mongoose.model("Group", this.groupSchema);
+        const d = new Date();
         let tableData = await this.scrape();
         tableData.shift();
         let trackList = [];
@@ -120,7 +121,13 @@ class Releases {
             albumType, albumName, artistImage, artistInfo;
         let promise = new Promise(async (resolve, reject) => {
             for(let i = 0; i < tableData.length; i++) {
-                console.log(tableData[i]);
+                if (tableData[i][0] === "") {
+                    date = await previousDate;
+                } else {
+                    previousDate = (d.getMonth() + 1) +  "/" + tableData[i][0] + "/" + d.getFullYear();
+                    date = previousDate;
+                }
+                console.log(tableData[i][2] + " " + date + " " + i);
             }
         })
         promise.then(() => this.disconnect())
