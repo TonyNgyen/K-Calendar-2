@@ -412,3 +412,5 @@ spotify.getReleasesData()
 // run spotify.js
 // delete releases on mongoDB
 // run scrape.js
+
+// errorList is in lower_case
