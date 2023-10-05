@@ -8,7 +8,7 @@ class Releases {
   async connect() {
     try {
       let connection = await mongoose.connect(
-        "mongodb+srv://tony:mHRUNHNCWtVKLRbC@cluster0.kljmqtn.mongodb.net/KCalendar?retryWrites=true&w=majority"
+        "mongodb+srv://tony:ZBEC37QV1yTe8VIk@cluster0.kljmqtn.mongodb.net/KCalendar?retryWrites=true&w=majority"
       );
       mongoose.set("strictQuery", false);
     } catch (err) {
@@ -134,87 +134,93 @@ class Releases {
       artistInfo;
     let undefinedCounter = 0;
     let findUndefined = new Promise(async (resolve, reject) => {
-        for (let i = 0; i < tableData.length; i++) {
-            if (tableData[i][2] === undefined) {
-                undefinedCounter++;
-            }
+      for (let i = 0; i < tableData.length; i++) {
+        if (tableData[i][2] === undefined) {
+          undefinedCounter++;
         }
-        resolve();
-    })
+      }
+      resolve();
+    });
     let promise = new Promise(async (resolve, reject) => {
       for (let i = 0; i < tableData.length; i++) {
         if (tableData[i][2] === undefined) {
-            continue;
+          continue;
         }
-          if (tableData[i][0] === "") {
-            date = await previousDate;
-          } else {
-            previousDate =
-              d.getMonth() + 1 + "/" + tableData[i][0] + "/" + d.getFullYear();
-            date = previousDate;
-          }
-          if (tableData[i][1] === "") {
-            time = await previousTime;
-          } else {
-            previousTime = tableData[i][1];
-            time = tableData[i][1];
-          }
+        if (tableData[i][0] === "") {
+          date = await previousDate;
+        } else {
+          previousDate =
+            d.getMonth() + 1 + "/" + tableData[i][0] + "/" + d.getFullYear();
+          date = previousDate;
+        }
+        if (tableData[i][1] === "") {
+          time = await previousTime;
+        } else {
+          previousTime = tableData[i][1];
+          time = tableData[i][1];
+        }
 
-          if (tableData[i][3] === "") {
-            albumName = "N/A";
-          } else {
-            albumName = tableData[i][3];
-          }
+        if (tableData[i][3] === "") {
+          albumName = "N/A";
+        } else {
+          albumName = tableData[i][3];
+        }
 
-          if (tableData[i][4] === "") {
-            albumType = "N/A";
-          } else {
-            albumType = tableData[i][4];
-          }
+        if (tableData[i][4] === "") {
+          albumType = "N/A";
+        } else {
+          albumType = tableData[i][4];
+        }
 
-          if (tableData[i][5] === "") {
-            titleTrack = "N/A";
-          } else {
-            titleTrack = tableData[i][5];
-          }
-          try {
-            artistInfo = await Group.find({
-              lower_case: tableData[i][2]
-                .text()
-                .replace(/ *\([^)]*\) */g, "")
-                .split(", ")[0]
-                .toLowerCase(),
-            });
-            if (artistInfo[0]["artist image"] === undefined) {
-              console.log("This is it");
-              artistImage =
-                "https://i.scdn.co/image/ab6761610000e5ebb1a15fd3e7c1b375dea2637a";
-            } else {
-              console.log("This works");
-              artistImage = artistInfo[0]["artist image"];
-            }
-          } catch (err) {
-            console.log(tableData[i][2]);
+        if (tableData[i][5] === "") {
+          titleTrack = "N/A";
+        } else {
+          titleTrack = tableData[i][5];
+        }
+        try {
+          artistInfo = await Group.find({
+            lower_case: tableData[i][2]
+              .text()
+              .replace(/ *\([^)]*\) */g, "")
+              .split(", ")[0]
+              .toLowerCase(),
+          });
+          if (artistInfo[0]["artist image"] === undefined) {
+            console.log("This is it");
             artistImage =
               "https://i.scdn.co/image/ab6761610000e5ebb1a15fd3e7c1b375dea2637a";
+          } else {
+            console.log("This works");
+            artistImage = artistInfo[0]["artist image"];
           }
-          let dataDict = new Release({
-              "date": await date,
-              "time": await time,
-              "artist": tableData[i][2].replace(/ *\([^)]*\) */g, "").split(", ")[0],
-              "artist image": artistImage,
-              "name": albumName,
-              "album type": albumType,
-              "title track": titleTrack,
-          });
-          await dataDict.save();
-          trackList.push(dataDict);
-          if (trackList.length === tableData.length - undefinedCounter) resolve();
+        } catch (err) {
+          console.log(tableData[i][2]);
+          artistImage =
+            "https://i.scdn.co/image/ab6761610000e5ebb1a15fd3e7c1b375dea2637a";
+        }
+        let dataDict = new Release({
+          date: await date,
+          time: await time,
+          artist: tableData[i][2].replace(/ *\([^)]*\) */g, "").split(", ")[0],
+          "artist image": artistImage,
+          name: albumName,
+          "album type": albumType,
+          "title track": titleTrack,
+        });
+        await dataDict.save();
+        trackList.push(dataDict);
+        if (trackList.length === tableData.length - undefinedCounter) resolve();
       }
     });
     findUndefined.then(() => promise.then(() => this.disconnect()));
   }
+
+  async dropReleases() {
+    const Release = mongoose.model("Release", this.releaseSchema);
+    await Release.collection.drop();
+    this.disconnect();
+  }
 }
 
 let releases = new Releases();
-releases.saveToMongoDB();
+releases.drop();
