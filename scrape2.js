@@ -150,7 +150,7 @@ class Releases {
           date = await previousDate;
         } else {
           previousDate =
-            d.getMonth() + 1 + "/" + tableData[i][0] + "/" + d.getFullYear();
+            d.getMonth() + 1 + "/" + tableData[i][0].slice(0,-2) + "/" + d.getFullYear();
           date = previousDate;
         }
         if (tableData[i][1] === "") {
@@ -180,7 +180,6 @@ class Releases {
         try {
           artistInfo = await Group.find({
             lower_case: tableData[i][2]
-              .text()
               .replace(/ *\([^)]*\) */g, "")
               .split(", ")[0]
               .toLowerCase(),
@@ -194,7 +193,7 @@ class Releases {
             artistImage = artistInfo[0]["artist image"];
           }
         } catch (err) {
-          console.log(tableData[i][2]);
+          console.log("Group experienced error: " + tableData[i][2]);
           artistImage =
             "https://i.scdn.co/image/ab6761610000e5ebb1a15fd3e7c1b375dea2637a";
         }
@@ -223,4 +222,4 @@ class Releases {
 }
 
 let releases = new Releases();
-releases.drop();
+releases.saveToMongoDB();
