@@ -6,7 +6,7 @@ class Releases {
     async connect() {
         try {
             let connection = await mongoose.connect(
-                "mongodb+srv://tony:ZBEC37QV1yTe8VIk@cluster0.kljmqtn.mongodb.net/KCalendar?retryWrites=true&w=majority"
+                "mongodb+srv://tony:mHRUNHNCWtVKLRbC@cluster0.kljmqtn.mongodb.net/KCalendar?retryWrites=true&w=majority"
             );
             mongoose.set("strictQuery", false);
         } catch (err) {
