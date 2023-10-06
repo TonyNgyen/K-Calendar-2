@@ -406,7 +406,8 @@ class Spotify {
 }
 
 let spotify = new Spotify(client_id, client_secret)
-spotify.getReleasesData()
+// spotify.getReleasesData()
+spotify.getAllDataById(["6RHTUrRF63xao58xh9FXYJ"])
 
 // run scrape.js
 // run spotify.js
