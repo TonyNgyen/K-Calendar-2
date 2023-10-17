@@ -180,13 +180,12 @@ class Releases {
         try {
           artistInfo = await Group.find({
             lower_case: tableData[i][2]
-              .text()
               .replace(/ *\([^)]*\) */g, "")
               .split(", ")[0]
               .toLowerCase(),
           });
           if (artistInfo[0]["artist image"] === undefined) {
-            console.log("This is it");
+            console.log("This group does not have an image: " + tableData[i][2]);
             artistImage =
               "https://i.scdn.co/image/ab6761610000e5ebb1a15fd3e7c1b375dea2637a";
           } else {
@@ -194,7 +193,10 @@ class Releases {
             artistImage = artistInfo[0]["artist image"];
           }
         } catch (err) {
-          console.log(tableData[i][2]);
+          console.log("This group ran into an error: " + tableData[i][2]
+          .replace(/ *\([^)]*\) */g, "")
+          .split(", ")[0]
+          .toLowerCase(),);
           artistImage =
             "https://i.scdn.co/image/ab6761610000e5ebb1a15fd3e7c1b375dea2637a";
         }
@@ -223,4 +225,5 @@ class Releases {
 }
 
 let releases = new Releases();
-releases.drop();
+releases.saveToMongoDB();
+// releases.dropReleases();
