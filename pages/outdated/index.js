@@ -11,7 +11,7 @@ function outdated() {
         place without considering how those solutions would be maintianed in the
         future. As a result, it has become extremely hard to maintain and
         further develop features. I have shifted my focus to another project,{" "}
-        <Link href={"https://github.com/TonyNgyen/GymTracker"}>GymTracker</Link>{" "}
+        <Link className="underline" href={"https://github.com/TonyNgyen/GymTracker"}>GymTracker</Link>{" "}
         which has taught me many lessons that I can use in my future projects to
         streamline development. Because of this, I will return to K-Calendar in
         the future and develop a new version that is vastly superior to what you
