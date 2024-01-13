@@ -90,7 +90,7 @@ class Releases {
         // - opens to reddit
         // - wait until the dom content is loaded (HTML is ready)
         await page.goto(
-            "https://www.reddit.com/r/kpop/wiki/upcoming-releases/2023/october/",
+            "https://www.reddit.com/r/kpop/wiki/upcoming-releases/2023/december/",
             {
                 waitUntil: "domcontentloaded",
             }
